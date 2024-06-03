@@ -1,8 +1,2 @@
-FROM php:7.4-apache
-
-# PHP拡張機能のインストール
-RUN docker-php-ext-install mysqli pdo_mysql
-
-# Apacheの設定
-RUN a2enmod rewrite
-
+iFROM mysql:8.0
+ENV LANG ja_JP.UTF-8
