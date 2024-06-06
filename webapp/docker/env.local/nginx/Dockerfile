@@ -21,6 +21,6 @@ COPY --from=node /opt /opt
 ENV APP_HOME /work/backend
 RUN mkdir -p $APP_HOME
 
-ADD docker/env.dev/nginx/conf.d /etc/nginx/conf.d
+# ADD docker/env.dev/nginx/conf.d /etc/nginx/conf.d
 
 VOLUME $APP_HOME
