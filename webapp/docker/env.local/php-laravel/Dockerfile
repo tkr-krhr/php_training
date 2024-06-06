@@ -42,6 +42,11 @@ RUN chmod +x /usr/local/bin/install-php-extensions; \
     mkdir /var/run/php-fpm; \
     install-php-extensions bcmath gd gettext intl mcrypt mysqli opcache pcntl pdo_mysql redis xsl zip exif
 
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN composer install
+
+
 #-- [ Build PHP App Environment ]---------------------------
 FROM php-build-stage as php-app-build-stage
 
@@ -57,7 +62,7 @@ COPY ./docker/env.local/php-laravel/.env         $APP_HOME/.env
 COPY ./docker/env.local/php-laravel/php.ini      /usr/local/etc/php/
 COPY ./docker/env.local/php-laravel/php-fpm.d/*  /usr/local/etc/php-fpm.d/
 
-PHP Setup && NPM Build
+# PHP Setup && NPM Build
 RUN mkdir -p $APP_HOME/storage/framework/aop/compile; \
     mkdir -p $APP_HOME/storage/framework/cache/data; \
     mkdir -p $APP_HOME/storage/framework/sessions; \
@@ -67,5 +72,5 @@ RUN mkdir -p $APP_HOME/storage/framework/aop/compile; \
     chmod -R 777 $APP_HOME/storage; \
     chmod -R 777 $APP_HOME/bootstrap/cache;
 
-Assets Build
+# Assets Build
 RUN cd $APP_HOME && npm install && npm run build
