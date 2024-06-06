@@ -52,20 +52,20 @@ RUN mkdir -p $APP_HOME
 VOLUME  $APP_HOME
 WORKDIR $APP_HOME
 
-# COPY .  $APP_HOME
-# COPY ./docker/env.dev/php-laravel/.env         $APP_HOME/.env
-# COPY ./docker/env.dev/php-laravel/php.ini      /usr/local/etc/php/
-# COPY ./docker/env.dev/php-laravel/php-fpm.d/*  /usr/local/etc/php-fpm.d/
+COPY .  $APP_HOME
+COPY ./docker/env.local/php-laravel/.env         $APP_HOME/.env
+COPY ./docker/env.local/php-laravel/php.ini      /usr/local/etc/php/
+COPY ./docker/env.local/php-laravel/php-fpm.d/*  /usr/local/etc/php-fpm.d/
 
-# PHP Setup && NPM Build
-# RUN mkdir -p $APP_HOME/storage/framework/aop/compile; \
-#     mkdir -p $APP_HOME/storage/framework/cache/data; \
-#     mkdir -p $APP_HOME/storage/framework/sessions; \
-#     mkdir -p $APP_HOME/storage/framework/testing; \
-#     mkdir -p $APP_HOME/storage/framework/views; \
-#     php artisan storage:link; \
-#     chmod -R 777 $APP_HOME/storage; \
-#     chmod -R 777 $APP_HOME/bootstrap/cache;
+PHP Setup && NPM Build
+RUN mkdir -p $APP_HOME/storage/framework/aop/compile; \
+    mkdir -p $APP_HOME/storage/framework/cache/data; \
+    mkdir -p $APP_HOME/storage/framework/sessions; \
+    mkdir -p $APP_HOME/storage/framework/testing; \
+    mkdir -p $APP_HOME/storage/framework/views; \
+    php artisan storage:link; \
+    chmod -R 777 $APP_HOME/storage; \
+    chmod -R 777 $APP_HOME/bootstrap/cache;
 
-# Assets Build
-# RUN cd $APP_HOME && npm install && npm run build
+Assets Build
+RUN cd $APP_HOME && npm install && npm run build
