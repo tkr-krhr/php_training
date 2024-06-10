@@ -42,8 +42,8 @@ services:
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
-      MYSQL_DATABASE: 'asahi_common'
-      MYSQL_USER: 'asahi'
+      MYSQL_DATABASE: 'accounts'
+      MYSQL_USER: 'user'
       MYSQL_PASSWORD: 'pass'
     ports:
       - 23306:3306
