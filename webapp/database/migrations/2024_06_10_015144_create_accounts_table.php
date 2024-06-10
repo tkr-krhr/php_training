@@ -28,6 +28,7 @@ return new class extends Migration
 
         // テストデータ挿入
         DB::table('accounts')->insert([
+        [
             'name' => 'サンプル太郎',
             'account_id' => '0001',
             'email' => 'sample@example.com',
@@ -36,7 +37,18 @@ return new class extends Migration
             'remember_token' => Str::random(10),
             'created_at' => now(),
             'updated_at' => now(),
-        ]);
+        ],
+        [
+            'name' => 'サンプル次郎',
+            'account_id' => '0002',
+            'email' => 'sample2@example.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('password2'),
+            'remember_token' => Str::random(10),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ],
+    ]);
     }
 
     /**
