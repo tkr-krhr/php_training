@@ -14,8 +14,11 @@ return [
     */
 
     'defaults' => [
-        'guard' => env('AUTH_GUARD', 'web'),
-        'passwords' => env('AUTH_PASSWORD_BROKER', 'users'),
+        // 'guard' => env('AUTH_GUARD', 'web'),
+        // 'passwords' => env('AUTH_PASSWORD_BROKER', 'users'),
+        // ]
+        'guard' => 'web_login',
+        'passwords' => 'accounts',
     ],
 
     /*
@@ -39,6 +42,10 @@ return [
         'web' => [
             'driver' => 'cognito-session',
             'provider' => 'users',
+        ],
+        'web_login' => [
+            'driver' => 'session',
+            'provider' => 'accounts',
         ],
         'api' => [
             'driver' => 'cognito-token',
@@ -67,6 +74,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
+        ],
+        'accounts' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Account::class,
         ],
 
         // 'users' => [
