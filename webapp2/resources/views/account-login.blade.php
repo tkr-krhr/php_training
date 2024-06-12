@@ -11,8 +11,8 @@
     
     <form action="{{route('login')}}" method="post">
         @csrf
-        <label for="">アカウントID</label>
-        <input type="text" name="account_id">
+        <label for="">メールアドレス</label>
+        <input type="text" name="email">
         <br>
         <label for="">パスワード</label>
         <input type="text" name="password">

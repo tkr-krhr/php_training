@@ -15,10 +15,11 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('accounts');
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
-            $table->string('name');->nullable();
-            $table->string('account_id');
+            $table->string('name')->nullable();
+            $table->string('account_id')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

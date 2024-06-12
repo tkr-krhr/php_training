@@ -12,7 +12,7 @@ Route::get('login', [AccountController::class, 'index']);
 Route::post('login', [AccountController::class, 'login'])->name('login');
 
 Route::middleware('auth')->group(function () {
-    Route::get('home', [AccountController::class, 'home']);
+    Route::get('home', [AccountController::class, 'home'])->name('home');
  });
 
  Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
