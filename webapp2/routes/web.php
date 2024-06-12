@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -14,5 +15,5 @@ Route::middleware('auth')->group(function () {
     Route::get('home', [AccountController::class, 'home']);
  });
 
-Route::get('/register', 'App\Http\Controllers\Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@register');
+ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+ Route::post('/register', [RegisterController::class, 'register']);

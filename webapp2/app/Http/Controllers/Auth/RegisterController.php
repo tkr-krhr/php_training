@@ -7,6 +7,22 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
+    public function showRegistrationForm()
+    {
+        return view('auth.register');
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        $user = $this->create($request->all());
+
+        // Optional: log the user in
+        // auth()->login($user);
+
+        return redirect()->route('home'); // Redirect to home or wherever you want
+    }
     protected function create(array $data)
     {
     return User::create([
@@ -14,7 +30,7 @@ class RegisterController extends Controller
         'password' => Hash::make($data['password']),
     ]);
     }
-    
+
     protected function validator(array $data)
     {
     return Validator::make($data, [
