@@ -17,7 +17,7 @@ return new class extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name');->nullable();
             $table->string('account_id');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -27,16 +27,16 @@ return new class extends Migration
         });
 
         // テストデータ挿入
-        DB::table('accounts')->insert([
-            'name' => 'サンプル太郎',
-            'account_id' => '0001',
-            'email' => 'sample@example.com',
-            'email_verified_at' => now(),
-            'password' => bcrypt('password'),
-            'remember_token' => Str::random(10),
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        // DB::table('accounts')->insert([
+        //     'name' => 'サンプル太郎',
+        //     'account_id' => '0001',
+        //     'email' => 'sample@example.com',
+        //     'email_verified_at' => now(),
+        //     'password' => bcrypt('password'),
+        //     'remember_token' => Str::random(10),
+        //     'created_at' => now(),
+        //     'updated_at' => now(),
+        // ]);
     }
 
     /**
