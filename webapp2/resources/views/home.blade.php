@@ -8,5 +8,9 @@
 </head>
 <body>
     <h1>ログイン成功の画面</h1>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: inline;">
+    @csrf
+    <button type="submit" class="btn btn-primary">ログアウト</button>
+</form>
 </body>
 </html>
