@@ -12,13 +12,23 @@
     <form action="{{route('login')}}" method="post">
         @csrf
         <label for="">メールアドレス</label>
-        <input type="text" name="email">
+        <input type="text" name="email" value="{{ old('email') }}" required>
         <br>
         <label for="">パスワード</label>
         <input type="text" name="password">
         <br>
         <input type="submit" value="ログイン">
     </form>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
     
 </body>
 </html>
