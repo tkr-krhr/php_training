@@ -11,6 +11,6 @@
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: inline;">
     @csrf
     <button type="submit" class="btn btn-primary">ログアウト</button>
-</form>
+    </form>
 </body>
 </html>

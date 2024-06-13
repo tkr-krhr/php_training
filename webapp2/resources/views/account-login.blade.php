@@ -19,6 +19,10 @@
         <br>
         <input type="submit" value="ログイン">
     </form>
+    <form id="logout-form" action="{{ route('register') }}" method="GET" style="display: inline;">
+    @csrf
+    <button type="submit" class="btn btn-register">アカウント登録画面へ</button>
+    </form>
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
