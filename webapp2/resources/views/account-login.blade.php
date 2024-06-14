@@ -19,10 +19,18 @@
         <br>
         <input type="submit" value="ログイン">
     </form>
+
     <form id="logout-form" action="{{ route('register') }}" method="GET" style="display: inline;">
     @csrf
     <button type="submit" class="btn btn-register">アカウント登録画面へ</button>
     </form>
+
+    <br>
+    <form id="search-form" action="{{ route('search.form') }}" method="GET" style="display: inline;">
+    @csrf
+    <button type="submit" class="btn btn-search">id検索</button>
+    </form>
+
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -32,7 +40,6 @@
         </ul>
     </div>
     @endif
-
     
 </body>
 </html>

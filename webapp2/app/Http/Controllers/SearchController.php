@@ -25,7 +25,7 @@ class SearchController extends Controller
 
         return view('search', [
             'email' => $email,
-            'user' => $account_id,
+            'account_id' => $account_id,
         ]);
     }
 }
