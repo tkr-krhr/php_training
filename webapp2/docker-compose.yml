@@ -52,3 +52,15 @@ services:
     volumes:
       - ./docker/env.local/mysql/data:/docker-entrypoint-initdb.d
       - ./docker/env.local/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+
+  services:
+    react-app:
+      container_name: react
+      build:
+        context: .
+        dockerfile: ./docker/env.local/react/Dockerfile
+      ports:
+        - "3000:3000"
+      volumes:
+        - .:/work/backend
+      stdin_open: true
