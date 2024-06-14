@@ -8,7 +8,13 @@
 </head>
 <body>
     <h1>ログイン</h1>
-    
+
+    @if (session('status'))
+        <div class="alert alert-success">
+        {{ session('status') }}
+        </div>
+    @endif
+
     <form action="{{route('login')}}" method="post">
         @csrf
         <label for="">メールアドレス</label>
@@ -40,6 +46,6 @@
         </ul>
     </div>
     @endif
-    
+
 </body>
 </html>
