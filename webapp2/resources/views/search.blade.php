@@ -28,20 +28,17 @@
         </div>
     @endif
 
+
     @if (is_null($account_id))
-    <div>
-        <ul>
-            <li>ユーザーが見つかりませんでした。</li>
-        </ul>
-    </div>
-    
+        <div>
+            <ul>
+                <li>ユーザーが見つかりませんでした。</li>
+            </ul>
+        </div>
+    @else
+        <p>Email: {{ $email }}</p>
+        <p>ID: {{ $account_id->id }}</p>
     @endif
 
-    @if (isset($account_id))
-        @if ($account_id)
-            <p>Email: {{ $email }}</p>
-            <p>ID: {{ $account_id->id }}</p>
-        @endif
-    @endif
 </body>
 </html>
