@@ -18,15 +18,6 @@
         <button type="submit">検索</button>
     </form>
 
-    @if (isset($account_id))
-        @if ($account_id)
-            <p>Email: {{ $email }}</p>
-            <p>ID: {{ $account_id->id }}</p>
-        @else
-            <p>ユーザーが見つかりませんでした。</p>
-        @endif
-    @endif
-
     @if ($errors->any())
         <div>
             <ul>
@@ -35,6 +26,22 @@
                 @endforeach
             </ul>
         </div>
+    @endif
+
+    @if (is_null($account_id))
+    <div>
+        <ul>
+            <li>ユーザーが見つかりませんでした。</li>
+        </ul>
+    </div>
+    
+    @endif
+
+    @if (isset($account_id))
+        @if ($account_id)
+            <p>Email: {{ $email }}</p>
+            <p>ID: {{ $account_id->id }}</p>
+        @endif
     @endif
 </body>
 </html>

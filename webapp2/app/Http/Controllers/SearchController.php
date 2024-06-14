@@ -21,6 +21,7 @@ class SearchController extends Controller
         ]);
 
         $email = $request->input('email');
+
         $account_id = DB::table('accounts')->where('email', $email)->first(['id']);
 
         return view('search', [
