@@ -19,11 +19,6 @@ class AccountController extends Controller
     {
         $credentials = $request->only(['email', 'password']);
         $account = Account::where('email', $credentials['email'])->first();
-        $test = Hash::driver('pbkdf2_mcf')->make($credentials['password']);
-        Log::info($test);
-
-        Log::info($credentials['password']);
-
         if ($account && Hash::driver('pbkdf2_mcf')->check($credentials['password'], $account->password)) { // MCF形式のハッシュを検証
             Auth::login($account);
             $request->session()->regenerate();

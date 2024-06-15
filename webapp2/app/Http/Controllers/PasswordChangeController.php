@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class PasswordChangeController extends Controller
 {
@@ -22,7 +23,7 @@ class PasswordChangeController extends Controller
 
         $account = Auth::user();
         $currentPassword = $request->input('current_password');
-        $newPassword = $request->input('new_password');
+        $newPassword = $request->input('password');
 
         if (!Hash::driver('pbkdf2_mcf')->check($currentPassword, $account->password)) {
             return back()->with('error', '現在のパスワードが間違っています。');

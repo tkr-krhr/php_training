@@ -1,12 +1,11 @@
 <?php
 
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
-return new class extends Migration
+class CreateSessionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,29 +14,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('accounts');
-        Schema::create('accounts', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->nullable();
-            $table->string('account_id')->nullable();
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+        Schema::create('sessions', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->foreignId('user_id')->nullable()->index();
+            $table->string('ip_address', 45)->nullable();
+            $table->text('user_agent')->nullable();
+            $table->text('payload')->nullable();
+            $table->integer('last_activity')->index();
         });
-
-        // テストデータ挿入
-        // DB::table('accounts')->insert([
-        //     'name' => 'サンプル太郎',
-        //     'account_id' => '0001',
-        //     'email' => 'sample@example.com',
-        //     'email_verified_at' => now(),
-        //     'password' => bcrypt('password'),
-        //     'remember_token' => Str::random(10),
-        //     'created_at' => now(),
-        //     'updated_at' => now(),
-        // ]);
     }
 
     /**
@@ -47,7 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('accounts');
+        Schema::dropIfExists('sessions');
     }
-};
-
+}
